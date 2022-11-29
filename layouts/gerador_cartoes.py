@@ -1,10 +1,13 @@
-from dash import dcc
+from dash import dcc, html
 
 from entidades.pokemon import Pokemom
 from app import *
+import dash_bootstrap_components as dbc
 
 
 def gerar_cartoes(pokemon: Pokemom):
+    print(pokemon.habilidade)
+    print(pokemon.estatisticas)
     return [
 
         dbc.CardImg(src=pokemon.img,
@@ -20,18 +23,49 @@ def gerar_cartoes(pokemon: Pokemom):
                         title=pokemon.name,
                         id=f'nome_pokemon_{pokemon.id}', ),
                 html.P(f"{' - '.join(pokemon.tipos).title()}"),
+                dbc.Row(
+                    [
+                        dbc.Col(html.Div("Linha 1"), md=6),
+                        dbc.Col(dbc.Progress(value=pokemon.estatisticas[0]["hp"]), md=6, style={'margin-top': '5px'})
+                    ]
+                ),
+                dbc.Row(
+                    [
+                        dbc.Col(html.Div("Linha 2"), md=6),
+                        dbc.Col(dbc.Progress(value=pokemon.estatisticas[0]["hp"]), md=6, style={'margin-top': '5px'})
+                    ]
+                ),
+                dbc.Row(
+                    [
+                        dbc.Col(html.Div("Linha 3"), md=6),
+                        dbc.Col(dbc.Progress(value=pokemon.estatisticas[0]["hp"]), md=6, style={'margin-top': '5px'})
+                    ]
+                ),
+                dbc.Row(
+                    [
+                        dbc.Col(html.Div("Linha 4"), md=6),
+                        dbc.Col(dbc.Progress(value=pokemon.estatisticas[0]["hp"]), md=6, style={'margin-top': '5px'})
+                    ]
+                ),
+                dbc.Row(
+                    [
+                        dbc.Col(html.Div("Linha 5"), md=6),
+                        dbc.Col(dbc.Progress(value=pokemon.estatisticas[0]["hp"]), md=6, style={'margin-top': '5px'})
+                    ]
+                ),
+                dbc.Row(
+                    [
+                        dbc.Col(html.Div("Linha 6"), md=6),
+                        dbc.Col(dbc.Progress(value=pokemon.estatisticas[0]["hp"]), md=6, style={'margin-top': '5px'})
+                    ]
+                ),
 
-                html.Div([
-                    html.P(f'HP : {pokemon.estatisticas[0]["hp"]}'),
-                    dbc.Progress(value=pokemon.estatisticas[0]["hp"],
-                                 color="success",
-                                 className="mb-3",
-                                 style={"width": "141px",
-                                        "height": "10px",
-                                        "margin-left": "100px",
-                                        "margin-top": "10px"}),
 
-                ])
+                # dbc.Progress(value=pokemon.estatisticas[0]["hp"],
+                #              style={"width": "100px",
+                #                     "height": "20px",
+                #                     "margin-left": "200px",
+                #                     "top": "300px"}),
 
             ],
         )
