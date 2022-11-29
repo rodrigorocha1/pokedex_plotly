@@ -2,7 +2,7 @@
 /analises/
 
 __pycache__/index.cpython-37.pyc
-index.py
+
 entidades/__pycache__/__init__.cpython-37.pyc
 entidades/__pycache__/cor_tipo_pokemon.cpython-37.pyc
 entidades/__pycache__/pokemon.cpython-37.pyc
@@ -13,3 +13,4 @@ layouts/__pycache__/layout_pokemon_id.cpython-37.pyc
 layouts/__pycache__/barra_lateral.cpython-37.pyc
 service/__pycache__/__init__.cpython-37.pyc
 service/__pycache__/pokeservice.cpython-37.pyc
+__pycache__/app.cpython-37.pyc
