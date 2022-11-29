@@ -1,0 +1,11 @@
+pokemon
+Outras formas 10001 - 10032 
+Formas mega 10033 -10090
+Alola - 10091 -- 10115
+
+1-Fazer consulta na 
+url https://pokeapi.co/api/v2/pokemon-species/?offset=0&limit=200000
+2 - extrair a url ex https://pokeapi.co/api/v2/pokemon-species/3/
+3 - Fazer a chamada na https://pokeapi.co/api/v2/pokemon-species/3/
+4 - pegar o campo name e url em varieties
+
