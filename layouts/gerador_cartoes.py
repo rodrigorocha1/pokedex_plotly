@@ -1,5 +1,4 @@
 from dash import dcc, html
-
 from entidades.pokemon import Pokemom
 from app import *
 import dash_bootstrap_components as dbc
