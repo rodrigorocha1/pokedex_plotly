@@ -5,7 +5,6 @@ import dash_bootstrap_components as dbc
 
 
 def gerar_cartoes(pokemon: Pokemom):
-
     return [
 
         dbc.CardImg(src=pokemon.img,
@@ -23,16 +22,25 @@ def gerar_cartoes(pokemon: Pokemom):
                 html.P(f"{' - '.join(pokemon.tipos).title()}"),
                 dbc.Tabs(
                     [
-                        dbc.Tab(
+                        dbc.Tab([
                             dbc.Row(
                                 [
                                     dbc.Col(html.Div("Linha 1"), md=6),
-                                    dbc.Col(dbc.Progress(value=pokemon.estatisticas[0]["hp"]), md=6,
+                                    dbc.Col(dbc.Progress(value=2), md=6,
                                             style={'margin-top': '5px'})
                                 ]
                             ),
-                                label="Stats", label_style={'display': 'flex',
-                              'flex-direction': 'row'}),
+                            dbc.Row(
+                                [
+                                    dbc.Col(html.Div("Linha 2"), md=6),
+                                    dbc.Col(dbc.Progress(value=2), md=6,
+                                            style={'margin-top': '5px'})
+                                ]
+                            )
+
+                        ],
+
+                            label="Stats"),
                         dbc.Tab("tab2_content", label="Habilites"),
 
                     ]
@@ -71,7 +79,7 @@ def gerar_cartoes(pokemon: Pokemom):
                     #         dbc.Col(html.Div("Linha 6"), md=6),
                     #         dbc.Col(dbc.Progress(value=pokemon.estatisticas[0]["hp"]), md=6, style={'margin-top': '5px'})
                     #     ]
-                ) ,
+                ),
 
                 # dbc.Progress(value=pokemon.estatisticas[0]["hp"],
                 #              style={"width": "100px",
