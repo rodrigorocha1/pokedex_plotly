@@ -18,11 +18,9 @@ class Pokemom:
             if kwargs['sprites']['other']['home']['front_default'] is not None else \
             kwargs['sprites']['other']['official-artwork']['front_default']
 
-        self._estatisicas = [
-            {
-                kwargs['stats'][chave]['stat']['name']: kwargs['stats'][chave]['base_stat']
-            } for chave, _ in enumerate(kwargs['stats'])
-        ]
+        self._estatisicas = {kwargs['stats'][i]['stat']['name']:
+                                 kwargs['stats'][i]['base_stat'] for i in
+                             range(len(kwargs['stats']))}
 
     @property
     def name(self) -> str:
@@ -49,14 +47,12 @@ class Pokemom:
         return self._habilidade
 
     @property
-    def estatisticas(self) -> Dict[str, List[int]]:
+    def estatisticas(self) -> Dict[str, int]:
         return self._estatisicas
 
 
 if __name__ == '__main__':
-    from os import environ
-    from dotenv import load_dotenv
+    from service.pokeservice import obter_dados_pokemon_id
 
-    load_dotenv()
-
-    print(str(environ['numero_pokemons']))
+    p = obter_dados_pokemon_id(1)
+    print(p.estatisticas)
