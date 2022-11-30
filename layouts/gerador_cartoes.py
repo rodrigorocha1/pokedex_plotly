@@ -6,7 +6,6 @@ import dash_bootstrap_components as dbc
 
 def gerar_cartoes(pokemon: Pokemom):
     return [
-
         dbc.CardImg(src=pokemon.img,
                     id=f'{pokemon.name}',
                     style={'width': '200px',
@@ -25,68 +24,17 @@ def gerar_cartoes(pokemon: Pokemom):
                         dbc.Tab([
                             dbc.Row(
                                 [
-                                    dbc.Col(html.Div("Linha 1"), md=6),
-                                    dbc.Col(dbc.Progress(value=2), md=6,
+                                    dbc.Col(html.Div(f"{chave} - {valor}"), md=6),
+                                    dbc.Col(dbc.Progress(value=valor), md=6,
                                             style={'margin-top': '5px'})
                                 ]
-                            ),
-                            dbc.Row(
-                                [
-                                    dbc.Col(html.Div("Linha 2"), md=6),
-                                    dbc.Col(dbc.Progress(value=2), md=6,
-                                            style={'margin-top': '5px'})
-                                ]
-                            )
+                            ) for chave, valor in pokemon.estatisticas.items()
 
                         ],
-
                             label="Stats"),
-                        dbc.Tab("tab2_content", label="Habilites"),
-
+                        dbc.Tab(pokemon.habilidade, label="Habilites"),
                     ]
-                    # dbc.Row(
-                    #     [
-                    #         dbc.Col(html.Div("Linha 1"), md=6),
-                    #         dbc.Col(dbc.Progress(value=pokemon.estatisticas[0]["hp"]), md=6, style={'margin-top': '5px'})
-                    #     ]
-                    # ),
-                    # dbc.Row(
-                    #     [
-                    #         dbc.Col(html.Div("Linha 2"), md=6),
-                    #         dbc.Col(dbc.Progress(value=pokemon.estatisticas[0]["hp"]), md=6, style={'margin-top': '5px'})
-                    #     ]
-                    # ),
-                    # dbc.Row(
-                    #     [
-                    #         dbc.Col(html.Div("Linha 3"), md=6),
-                    #         dbc.Col(dbc.Progress(value=pokemon.estatisticas[0]["hp"]), md=6, style={'margin-top': '5px'})
-                    #     ]
-                    # ),
-                    # dbc.Row(
-                    #     [
-                    #         dbc.Col(html.Div("Linha 4"), md=6),
-                    #         dbc.Col(dbc.Progress(value=pokemon.estatisticas[0]["hp"]), md=6, style={'margin-top': '5px'})
-                    #     ]
-                    # ),
-                    # dbc.Row(
-                    #     [
-                    #         dbc.Col(html.Div("Linha 5"), md=6),
-                    #         dbc.Col(dbc.Progress(value=pokemon.estatisticas[0]["hp"]), md=6, style={'margin-top': '5px'})
-                    #     ]
-                    # ),
-                    # dbc.Row(
-                    #     [
-                    #         dbc.Col(html.Div("Linha 6"), md=6),
-                    #         dbc.Col(dbc.Progress(value=pokemon.estatisticas[0]["hp"]), md=6, style={'margin-top': '5px'})
-                    #     ]
                 ),
-
-                # dbc.Progress(value=pokemon.estatisticas[0]["hp"],
-                #              style={"width": "100px",
-                #                     "height": "20px",
-                #                     "margin-left": "200px",
-                #                     "top": "300px"}),
-
             ],
         )
     ]
