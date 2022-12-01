@@ -122,7 +122,8 @@ app.layout = html.Div([
                        "height": "695px",
                        "left": "280px",
                        "top": "287px",
-                       "overflow-y": "scroll"})
+                       "overflow-y": "scroll",
+                       'overflow-x': 'hidden'})
         ], md=10)
     ], id='id_layout_principal'),
 
