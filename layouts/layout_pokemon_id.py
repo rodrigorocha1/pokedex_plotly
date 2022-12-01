@@ -17,7 +17,7 @@ def layout_pokemon_id(id_pokemon: int):
                 style={'width': '305px',
                        'left': '450px',
                        'right': '85px',
-                       'height': '600px',
+                       'height': '400px',
                        },
                 color=f'{pokemon.cor}'
 
