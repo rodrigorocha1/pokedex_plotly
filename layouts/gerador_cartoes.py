@@ -25,15 +25,24 @@ def gerar_cartoes(pokemon: Pokemom):
                             dbc.Row(
                                 [
                                     dbc.Col(html.Div(f"{chave.upper()} - {valor}"), md=8,
-                                            style={'font-size': '12px'}),
+                                            style={'font-size': '12px', 'margin-top': '1px'}),
                                     dbc.Col(dbc.Progress(value=valor, style={"height": "10px"}), md=4,
                                             style={'margin-top': '5px'})
                                 ]
                             ) for chave, valor in pokemon.estatisticas.items()
 
                         ],
-                            label="Stats", label_style={'color': 'black'}),
-                        dbc.Tab(pokemon.habilidade, label="Habilites", label_style={'color': 'black'}),
+                            label="Stats", label_style={'color': 'black'}, ),
+                        # dbc.Tab(pokemon.habilidade, label="Habilites", label_style={'color': 'black'}),
+                        dbc.Tab([
+                            dbc.Row(
+                                [
+                                    habilidade.capitalize()
+                                ], style={'margin-left': '5px'}
+                            ) for habilidade in pokemon.habilidade
+                        ]
+                            , label="Habilites", label_style={'color': 'black'}),
+
                     ]
                 ),
             ],
