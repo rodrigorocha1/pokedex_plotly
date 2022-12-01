@@ -7,7 +7,7 @@ def tela_pokemon(lista_pokemons, tipo=None):
     estilo = {'width': '305px',
               'left': '150px',
               'right': '85px',
-              'height': '430px',
+              'height': '400px',
               }
     if tipo in [cor.name for cor in Cor]:
         return dbc.Row([  # inicio

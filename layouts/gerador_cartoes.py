@@ -17,24 +17,23 @@ def gerar_cartoes(pokemon: Pokemom):
                 html.H5(f"{pokemon.id}-{pokemon.name.capitalize()}",
                         className="card-title",
                         title=pokemon.name,
-                        id=f'nome_pokemon_{pokemon.id}', style={'font-size': '18px', 'text-align': 'justify'}),
+                        id=f'nome_pokemon_{pokemon.id}', style={'font-size': '17px', 'text-align': 'justify'}),
                 html.P(f"{' - '.join(pokemon.tipos).title()}"),
                 dbc.Tabs(
                     [
                         dbc.Tab([
                             dbc.Row(
                                 [
-                                    dbc.Col(html.Div(f"{chave} - {valor}"), md=6,
-                                            style={'font-size': '12px',
-                                                   'text-align': 'justify'}),
-                                    dbc.Col(dbc.Progress(value=valor), md=6,
+                                    dbc.Col(html.Div(f"{chave.upper()} - {valor}"), md=8,
+                                            style={'font-size': '12px'}),
+                                    dbc.Col(dbc.Progress(value=valor, style={"height": "10px"}), md=4,
                                             style={'margin-top': '5px'})
                                 ]
                             ) for chave, valor in pokemon.estatisticas.items()
 
                         ],
-                            label="Stats", ),
-                        dbc.Tab(pokemon.habilidade, label="Habilites"),
+                            label="Stats", label_style={'color': 'black'}),
+                        dbc.Tab(pokemon.habilidade, label="Habilites", label_style={'color': 'black'}),
                     ]
                 ),
             ],
