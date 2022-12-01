@@ -44,7 +44,16 @@ def gerar_cartoes(pokemon: Pokemom):
                             ) for habilidade in pokemon.habilidade
                         ]
                             , label="Habilites", label_style={'color': 'black'}, id='label_habilidade'),
-
+                        dbc.Tab([
+                            dbc.Row(
+                                [
+                                    moves.capitalize()
+                                ], style={'margin-left': '5px'
+                                          }, id=f'id_habilidade_{moves}'
+                            ) for moves in pokemon.moves
+                        ]
+                            , label="Moves", label_style={'color': 'black'}, id='label_habilidade',
+                            style={"height": "120px", "overflow": "scroll"}),
                     ]
                 ),
             ],

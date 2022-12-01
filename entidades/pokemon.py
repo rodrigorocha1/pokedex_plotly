@@ -5,6 +5,7 @@ from typing import Dict, List
 
 class Pokemom:
     def __init__(self, **kwargs):
+
         self._id = kwargs['id']
         self._name = kwargs['name']
         self._tipos = [tipos['type']['name'] for tipos in kwargs.get('types')]
@@ -21,6 +22,12 @@ class Pokemom:
         self._estatisicas = {kwargs['stats'][i]['stat']['name']:
                                  kwargs['stats'][i]['base_stat'] for i in
                              range(len(kwargs['stats']))}
+
+        self._moves = [kwargs['moves'][i]['move']['name'] for i in range(len(kwargs['moves']))]
+
+    @property
+    def moves(self) -> List[str]:
+        return self._moves
 
     @property
     def name(self) -> str:
