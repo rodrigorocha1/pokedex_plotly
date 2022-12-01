@@ -1,11 +1,11 @@
-from entidades.cor_tipo_pokemon import Cor
+import requests
 
+from entidades.cor_tipo_pokemon import Cor
 from typing import Dict, List
 
 
 class Pokemom:
     def __init__(self, **kwargs):
-
         self._id = kwargs['id']
         self._name = kwargs['name']
         self._tipos = [tipos['type']['name'] for tipos in kwargs.get('types')]
@@ -24,6 +24,21 @@ class Pokemom:
                              range(len(kwargs['stats']))}
 
         self._moves = [kwargs['moves'][i]['move']['name'] for i in range(len(kwargs['moves']))]
+        # self._locations = self.__get_location(kwargs['location_area_encounters'])
+        self._locations = self.__get_location(kwargs['location_area_encounters'])
+
+    def __get_location(self, url: str) -> List[str]:
+        req = requests.get(url)
+
+        if req.status_code == 404:
+            location = []
+        else:  # req.json()['location_area']['name'] for i in range(len(req.json()['location_area']))
+            location = req.json()
+        return [location[i]['location_area']['name'] for i in range(len(location))]
+
+    @property
+    def locations(self):
+        return self._locations
 
     @property
     def moves(self) -> List[str]:
@@ -56,10 +71,3 @@ class Pokemom:
     @property
     def estatisticas(self) -> Dict[str, int]:
         return self._estatisicas
-
-
-if __name__ == '__main__':
-    from service.pokeservice import obter_dados_pokemon_id
-
-    p = obter_dados_pokemon_id(1)
-    print(p.estatisticas)

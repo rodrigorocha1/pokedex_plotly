@@ -54,7 +54,16 @@ def gerar_cartoes(pokemon: Pokemom):
                         ]
                             , label="Moves", label_style={'color': 'black'}, id='label_moves',
                             style={"height": "120px", "overflow-y": "auto", 'overflow-x': 'hidden'}),
-                    ]
+                        dbc.Tab([
+                            dbc.Row(
+                                [
+                                    locations.title()
+                                ], style={'margin-left': '5px'}
+                            ) for locations in pokemon.locations
+                        ]
+                            , label="Location", label_style={'color': 'black'}, id='label_locations',
+                            style={"height": "120px", "overflow-y": "auto", 'overflow-x': 'hidden'}),
+                    ], style={'font-size': '10px'}
                 ),
             ],
         )

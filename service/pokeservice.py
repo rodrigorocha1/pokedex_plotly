@@ -52,3 +52,8 @@ def obter_dados_pokemon_id(id_pokemon: int) -> Pokemom:
     print(f'Tempo execução Normal: {fim_time - start_time}')
 
     return pokemon, req.status_code
+
+
+if __name__ == '__main__':
+    p, _ = obter_dados_pokemon_id(1)
+    print(p.locations)
