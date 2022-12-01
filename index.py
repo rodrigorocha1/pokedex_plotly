@@ -60,44 +60,54 @@ app.layout = html.Div([
                         children=[
                             dcc.Tab(
                                 label='Pokemons Comuns',
-                                value='tab-1'
+                                value='tab-1',
+                                id='id_pokemons_comuns'
 
                             ),
                             dcc.Tab(
                                 label='Other Forms',
                                 value='tab-2',
+                                id='id_other_form'
                             ),
                             dcc.Tab(
                                 label='Mega Forms',
                                 value='tab-3',
+                                id='id_mega_forms'
                             ),
                             dcc.Tab(
                                 label='Alola Forms',
                                 value='tab-4',
+                                id='id_alola_forms'
                             ),
                             dcc.Tab(
                                 label='Forms',
                                 value='tab-5',
+                                id='id_forms'
                             ),
                             dcc.Tab(
                                 label='Galar Forms',
                                 value='tab-6',
+                                id='id_galar_forms'
                             ),
                             dcc.Tab(
                                 label='+ Forms',
                                 value='tab-7',
+                                id='id_more_form'
                             ),
                             dcc.Tab(
                                 label='Gmax Forms',
                                 value='tab-8',
+                                id='id_gmax_form'
                             ),
                             dcc.Tab(
                                 label='Hisui Forms',
                                 value='tab-9',
+                                id='id_hisui_forms'
                             ),
                             dcc.Tab(
                                 label='Origin forms ',
                                 value='tab-10',
+                                id='id_origin_forms'
                             ),
 
                         ]
