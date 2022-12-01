@@ -49,7 +49,7 @@ def gerar_cartoes(pokemon: Pokemom):
                                 [
                                     moves.capitalize()
                                 ], style={'margin-left': '5px'
-                                          }, id=f'id_habilidade_{moves}'
+                                          }, id=f'id_moves_{moves}'
                             ) for moves in pokemon.moves
                         ]
                             , label="Moves", label_style={'color': 'black'}, id='label_habilidade',
