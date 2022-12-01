@@ -52,7 +52,7 @@ def gerar_cartoes(pokemon: Pokemom):
                                           }, id=f'id_moves_{moves}'
                             ) for moves in pokemon.moves
                         ]
-                            , label="Moves", label_style={'color': 'black'}, id='label_habilidade',
+                            , label="Moves", label_style={'color': 'black'}, id='label_moves',
                             style={"height": "120px", "overflow-y": "auto"}),
                     ]
                 ),
