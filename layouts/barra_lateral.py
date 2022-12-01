@@ -27,7 +27,7 @@ barra_lateral = dbc.Col([
         style={"top": "200px",
                "left": "60px",
                "width": "150px"}
-    ), html.P('22222222222', id="id_p")
+    )
 
 ], md=2,
     style={"position": "absolute",
