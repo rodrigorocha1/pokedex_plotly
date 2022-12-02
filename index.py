@@ -139,14 +139,14 @@ app.layout = html.Div([
 @app.callback(Output('tabs_pokemon', 'children'),
               [Input('id_tab_tipo_pokemon', 'value'),
                Input('id_busca_pokemon', 'n_clicks'),
-               [Input(f"{cor.name}", "n_clicks") for cor in Cor],
-               Input('id_range_pokemon', 'value')],
-              State('input_pokemon', 'value')
+               [Input(f"{cor.name}", "n_clicks") for cor in Cor]],
+              [State('input_pokemon', 'value'),
+               State('id_range_pokemon', 'value')]
               )
 def render_page_pokemons(tab, *_):
     ctx = callback_context
-    valor_inicial = ctx.inputs['id_range_pokemon.value'][0]
-    valor_final = ctx.inputs['id_range_pokemon.value'][1]
+    valor_inicial = ctx.states_list[1].get('value')[0]
+    valor_final = ctx.states_list[1].get('value')[1]
     value = ctx.states_list[0].get('value')
     if tab == 'tab-1':  # Pokemons Comuns
         if value is None or value == 0 or value == '':
@@ -158,7 +158,7 @@ def render_page_pokemons(tab, *_):
 
                 return tela_pokemon(lista_pokemons, ctx.triggered_id)
             else:
-                return dbc.Alert("Escolha um valor de 1 a 105", color='warning')
+                return dbc.Alert("Escolha um intervalo de 105 Pokemons", color='warning')
         else:
             return layout_pokemon_id(int(value))
     if tab == 'tab-2':  # Other Forms
