@@ -19,15 +19,16 @@ app.layout = html.Div([
             html.Div(
 
                 [
-                    html.P(id="id_paragrafo",
-
-                           style={"position": "absolute",
-                                  "width": "847px",
-                                  "height": "50px",
-                                  "left": "427px",
-                                  "background": "#212946",
-                                  "color": "rgba(255, 255, 255, 0.6)",
-                                  "top": "0px"}),
+                    html.Div(
+                        dcc.RangeSlider(1, 905, 100, pushable=99, value=[1, 100], id='id_range_pokemon'),
+                        style={"position": "absolute",
+                               "width": "847px",
+                               "height": "50px",
+                               "left": "427px",
+                               "background": "#212946",
+                               "color": "rgba(255, 255, 255, 0.6)",
+                               "top": "50px"}
+                    ),
 
                     dbc.Input(id="input_pokemon",
                               placeholder="Buscar Pokémons #0000",
@@ -138,20 +139,26 @@ app.layout = html.Div([
 @app.callback(Output('tabs_pokemon', 'children'),
               [Input('id_tab_tipo_pokemon', 'value'),
                Input('id_busca_pokemon', 'n_clicks'),
-               [Input(f"{cor.name}", "n_clicks") for cor in Cor]],
+               [Input(f"{cor.name}", "n_clicks") for cor in Cor],
+               Input('id_range_pokemon', 'value')],
               State('input_pokemon', 'value')
               )
 def render_page_pokemons(tab, *_):
     ctx = callback_context
+    valor_inicial = ctx.inputs['id_range_pokemon.value'][0]
+    valor_final = ctx.inputs['id_range_pokemon.value'][1]
     value = ctx.states_list[0].get('value')
     if tab == 'tab-1':  # Pokemons Comuns
         if value is None or value == 0 or value == '':
-            inicio = 1
-            fim = 905
+            if valor_final - valor_inicial <= 105:
+                inicio = valor_inicial
+                fim = valor_final
 
-            lista_pokemons = run(get_all_pokemon(inicio, fim))
+                lista_pokemons = run(get_all_pokemon(inicio, fim))
 
-            return tela_pokemon(lista_pokemons, ctx.triggered_id)
+                return tela_pokemon(lista_pokemons, ctx.triggered_id)
+            else:
+                return dbc.Alert("Escolha um valor de 1 a 105", color='warning')
         else:
             return layout_pokemon_id(int(value))
     if tab == 'tab-2':  # Other Forms
